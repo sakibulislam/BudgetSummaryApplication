@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="summaryPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SearchVO1" RangeSize="25"
+              DataControl="AppModuleDataControl" id="SearchVO1Iterator"/>
+    <iterator Binds="SummaryVO1" RangeSize="500"
+              DataControl="AppModuleDataControl" id="SummaryVO1Iterator"/>
+    <searchRegion Binds="SummaryVO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="SummaryVO1Query"/>
+    <iterator Binds="Summary2VO1" RangeSize="500"
+              DataControl="AppModuleDataControl" id="Summary2VO1Iterator"/>
+    <searchRegion Binds="Summary2VO1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Summary2VO1Query"/>
+    <invokeAction id="setSessionId" Binds="setSessionValues" Refresh="always"/>
+  </executables>
+  <bindings>
+    <listOfValues StaticList="false" IterBinding="SearchVO1Iterator"
+                  Uses="LOV_BudgetYear1" id="BudgetYear1"/>
+    <listOfValues StaticList="false" IterBinding="SearchVO1Iterator"
+                  Uses="LOV_BudgetQuarter1" id="BudgetQuarter1"/>
+    <listOfValues StaticList="false" IterBinding="SearchVO1Iterator"
+                  Uses="LOV_Unit1" id="Unit1"/>
+    <attributeValues IterBinding="SearchVO1Iterator" id="Org1">
+      <AttrNames>
+        <Item Value="Org1"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues StaticList="false" IterBinding="SearchVO1Iterator"
+                  Uses="LOV_BudgetYear2" id="BudgetYear2"/>
+    <listOfValues StaticList="false" IterBinding="SearchVO1Iterator"
+                  Uses="LOV_BudgetQuarter2" id="BudgetQuarter2"/>
+    <listOfValues StaticList="false" IterBinding="SearchVO1Iterator"
+                  Uses="LOV_Unit2" id="Unit2"/>
+    <attributeValues IterBinding="SearchVO1Iterator" id="Org2">
+      <AttrNames>
+        <Item Value="Org2"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues StaticList="false" IterBinding="SearchVO1Iterator"
+                  Uses="LOV_DepartmentFrom" id="DepartmentFrom"/>
+    <listOfValues StaticList="false" IterBinding="SearchVO1Iterator"
+                  Uses="LOV_DepartmentTo" id="DepartmentTo"/>
+    <tree IterBinding="SummaryVO1Iterator" id="SummaryVO1">
+      <nodeDefinition DefName="view.SummaryVO" Name="SummaryVO10">
+        <AttrNames>
+          <Item Value="OrgId1"/>
+          <Item Value="Unit1"/>
+          <Item Value="BudgetYear1"/>
+          <Item Value="BudgetQuarter1"/>
+          <Item Value="OpexChild1"/>
+          <Item Value="NaturalCode1"/>
+          <Item Value="CodeDescription1"/>
+          <Item Value="BudgetAmount1"/>
+          <Item Value="OrgId2"/>
+          <Item Value="Unit2"/>
+          <Item Value="BudgetYear2"/>
+          <Item Value="BudgetQuarter2"/>
+          <Item Value="OpexChild2"/>
+          <Item Value="NaturalCode2"/>
+          <Item Value="CodeDescription2"/>
+          <Item Value="BudgetAmount2"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="Summary2VO1Iterator" id="Summary2VO1">
+      <nodeDefinition DefName="view.Summary2VO" Name="Summary2VO10">
+        <AttrNames>
+          <Item Value="BudgetYear1"/>
+          <Item Value="BudgetQuarter1"/>
+          <Item Value="OpexChild1"/>
+          <Item Value="NaturalCode1"/>
+          <Item Value="CodeDescription1"/>
+          <Item Value="BudgetAmount1"/>
+          <Item Value="BudgetYear2"/>
+          <Item Value="BudgetQuarter2"/>
+          <Item Value="OpexChild2"/>
+          <Item Value="NaturalCode2"/>
+          <Item Value="CodeDescription2"/>
+          <Item Value="BudgetAmount2"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="setSessionValues"
+                  InstanceName="AppModuleDataControl.dataProvider"
+                  DataControl="AppModuleDataControl" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="setSessionValues"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="orgId" NDValue="#{viewScope.OrgId}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="userId" NDValue="#{viewScope.UserId}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="respId" NDValue="#{viewScope.RespId}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="respAppl" NDValue="#{viewScope.RespAppId}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

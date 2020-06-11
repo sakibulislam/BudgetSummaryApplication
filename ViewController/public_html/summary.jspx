@@ -1,0 +1,518 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1">
+      <af:messages id="m1"/>
+      <af:form id="f1">
+        <af:panelGroupLayout layout="vertical" id="panelGroupLayout1">
+          <af:panelHeader text="Budget Summary" id="panelHeader1">
+            <af:panelFormLayout id="pfl2" maxColumns="2" rows="8">
+              <f:facet name="footer"/>
+              <af:inputListOfValues id="budgetYear1Id"
+                                    popupTitle="Search and Select: #{bindings.BudgetYear1.hints.label}"
+                                    value="#{bindings.BudgetYear1.inputValue}"
+                                    label="#{bindings.BudgetYear1.hints.label}"
+                                    model="#{bindings.BudgetYear1.listOfValuesModel}"
+                                    columns="#{bindings.BudgetYear1.hints.displayWidth}"
+                                    shortDesc="#{bindings.BudgetYear1.hints.tooltip}"
+                                    showRequired="true" required="true">
+                <f:validator binding="#{bindings.BudgetYear1.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.BudgetYear1.format}"/>
+                <af:autoSuggestBehavior suggestedItems="#{bindings.BudgetYear1.suggestedItems}"/>
+              </af:inputListOfValues>
+              <af:inputComboboxListOfValues id="budgetQuarter1Id"
+                                            popupTitle="Search and Select: #{bindings.BudgetQuarter1.hints.label}"
+                                            value="#{bindings.BudgetQuarter1.inputValue}"
+                                            label="#{bindings.BudgetQuarter1.hints.label}"
+                                            model="#{bindings.BudgetQuarter1.listOfValuesModel}"
+                                            columns="#{bindings.BudgetQuarter1.hints.displayWidth}"
+                                            shortDesc="#{bindings.BudgetQuarter1.hints.tooltip}"
+                                            required="true" showRequired="true">
+                <f:validator binding="#{bindings.BudgetQuarter1.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.BudgetQuarter1.format}"/>
+                <af:autoSuggestBehavior suggestedItems="#{bindings.BudgetQuarter1.suggestedItems}"/>
+              </af:inputComboboxListOfValues>
+              <af:inputListOfValues id="unit1Id"
+                                    popupTitle="Search and Select: #{bindings.Unit1.hints.label}"
+                                    value="#{bindings.Unit1.inputValue}"
+                                    label="#{bindings.Unit1.hints.label}"
+                                    model="#{bindings.Unit1.listOfValuesModel}"
+                                    required="#{bindings.Unit1.hints.mandatory}"
+                                    columns="#{bindings.Unit1.hints.displayWidth}"
+                                    shortDesc="#{bindings.Unit1.hints.tooltip}"
+                                    autoSubmit="true">
+                <f:validator binding="#{bindings.Unit1.validator}"/>
+                <af:autoSuggestBehavior suggestedItems="#{bindings.Unit1.suggestedItems}"/>
+              </af:inputListOfValues>
+              <af:spacer width="10" height="10" id="s2"/>
+              <af:inputListOfValues id="departmentFromId"
+                                    popupTitle="Search and Select: #{bindings.DepartmentFrom.hints.label}"
+                                    value="#{bindings.DepartmentFrom.inputValue}"
+                                    label="#{bindings.DepartmentFrom.hints.label}"
+                                    model="#{bindings.DepartmentFrom.listOfValuesModel}"
+                                    columns="#{bindings.DepartmentFrom.hints.displayWidth}"
+                                    shortDesc="#{bindings.DepartmentFrom.hints.tooltip}"
+                                    showRequired="true" required="true">
+                <f:validator binding="#{bindings.DepartmentFrom.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.DepartmentFrom.format}"/>
+                <af:autoSuggestBehavior suggestedItems="#{bindings.DepartmentFrom.suggestedItems}"/>
+              </af:inputListOfValues>
+              <af:inputListOfValues id="departmentToId"
+                                    popupTitle="Search and Select: #{bindings.DepartmentTo.hints.label}"
+                                    value="#{bindings.DepartmentTo.inputValue}"
+                                    label="#{bindings.DepartmentTo.hints.label}"
+                                    model="#{bindings.DepartmentTo.listOfValuesModel}"
+                                    columns="#{bindings.DepartmentTo.hints.displayWidth}"
+                                    shortDesc="#{bindings.DepartmentTo.hints.tooltip}"
+                                    showRequired="true" required="true">
+                <f:validator binding="#{bindings.DepartmentTo.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.DepartmentTo.format}"/>
+                <af:autoSuggestBehavior suggestedItems="#{bindings.DepartmentTo.suggestedItems}"/>
+              </af:inputListOfValues>
+              <af:spacer width="10" height="10" id="s1"/>
+              <af:panelLabelAndMessage label="#{bindings.Org1.hints.label}"
+                                       id="plam1" visible="false">
+                <af:outputText value="#{bindings.Org1.inputValue}" id="ot13"
+                               partialTriggers="unit1Id">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.Org1.format}"/>
+                </af:outputText>
+              </af:panelLabelAndMessage>
+              <af:inputListOfValues id="budgetYear2Id"
+                                    popupTitle="Search and Select: #{bindings.BudgetYear2.hints.label}"
+                                    value="#{bindings.BudgetYear2.inputValue}"
+                                    label="#{bindings.BudgetYear2.hints.label}"
+                                    model="#{bindings.BudgetYear2.listOfValuesModel}"
+                                    columns="#{bindings.BudgetYear2.hints.displayWidth}"
+                                    shortDesc="#{bindings.BudgetYear2.hints.tooltip}"
+                                    required="true" showRequired="true">
+                <f:validator binding="#{bindings.BudgetYear2.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.BudgetYear2.format}"/>
+                <af:autoSuggestBehavior suggestedItems="#{bindings.BudgetYear2.suggestedItems}"/>
+              </af:inputListOfValues>
+              <af:inputComboboxListOfValues id="budgetQuarter2Id"
+                                            popupTitle="Search and Select: #{bindings.BudgetQuarter2.hints.label}"
+                                            value="#{bindings.BudgetQuarter2.inputValue}"
+                                            label="#{bindings.BudgetQuarter2.hints.label}"
+                                            model="#{bindings.BudgetQuarter2.listOfValuesModel}"
+                                            columns="#{bindings.BudgetQuarter2.hints.displayWidth}"
+                                            shortDesc="#{bindings.BudgetQuarter2.hints.tooltip}"
+                                            showRequired="true" required="true">
+                <f:validator binding="#{bindings.BudgetQuarter2.validator}"/>
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.BudgetQuarter2.format}"/>
+                <af:autoSuggestBehavior suggestedItems="#{bindings.BudgetQuarter2.suggestedItems}"/>
+              </af:inputComboboxListOfValues>
+              <af:inputListOfValues id="unit2Id"
+                                    popupTitle="Search and Select: #{bindings.Unit2.hints.label}"
+                                    value="#{bindings.Unit2.inputValue}"
+                                    label="#{bindings.Unit2.hints.label}"
+                                    model="#{bindings.Unit2.listOfValuesModel}"
+                                    required="#{bindings.Unit2.hints.mandatory}"
+                                    columns="#{bindings.Unit2.hints.displayWidth}"
+                                    shortDesc="#{bindings.Unit2.hints.tooltip}"
+                                    readOnly="true" partialTriggers="unit1Id">
+                <f:validator binding="#{bindings.Unit2.validator}"/>
+                <af:autoSuggestBehavior suggestedItems="#{bindings.Unit2.suggestedItems}"/>
+              </af:inputListOfValues>
+              <af:panelLabelAndMessage label="#{bindings.Org2.hints.label}"
+                                       id="plam2" partialTriggers="unit1Id"
+                                       visible="false">
+                <af:outputText value="#{bindings.Org2.inputValue}" id="ot14"
+                               partialTriggers="unit2Id">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.Org2.format}"/>
+                </af:outputText>
+              </af:panelLabelAndMessage>
+              <af:spacer width="10" height="10" id="s3"/>
+              <af:spacer width="10" height="10" id="s4"/>
+              <af:commandButton text="Get Summary" id="cb3"
+                                actionListener="#{backingBean.getSummary}"
+                                partialSubmit="true"
+                                partialTriggers="unit2Id unit1Id"
+                                inlineStyle="font-size:small; font-weight:bold; font-family:'Arial Black';"/>
+            </af:panelFormLayout>
+          </af:panelHeader>
+          <af:panelGroupLayout id="pgl1" layout="horizontal"
+                               inlineStyle="height:50px; "
+                               styleClass="AFStretchWidth">
+            <af:panelGroupLayout id="pgl3"
+                                 inlineStyle="width:40%; text-align:left;">
+              <af:outputLabel value="Total Budget Of #{bindings.BudgetYear1.attributeValue} Q#{bindings.BudgetQuarter1.attributeValue} :"
+                              id="ol1" for="ot31"
+                              partialTriggers="budgetYear1Id budgetQuarter1Id"
+                              inlineStyle="font-size:medium;"/>
+              <af:outputText id="ot31" binding="#{backingBean.ttlBudgetAmt1}"
+                             partialTriggers="cb3"
+                             inlineStyle="font-size:medium; font-weight:bold;">
+                <af:convertNumber minFractionDigits="2" maxFractionDigits="2"
+                                  groupingUsed="true"/>
+              </af:outputText>
+            </af:panelGroupLayout>
+            <af:spacer width="10" height="10" id="s5"/>
+            <af:spacer width="10" height="10" id="s6"/>
+            <af:spacer width="10" height="10" id="s7"/>
+            <af:spacer width="10" height="10" id="s8"/>
+            <af:spacer width="10" height="10" id="s9"/>
+            <af:spacer width="10" height="10" id="s10"/>
+            <af:spacer width="10" height="10" id="s11"/>
+            <af:spacer width="10" height="10" id="s12"/>
+            <af:spacer width="10" height="10" id="s13"/>
+            <af:spacer width="10" height="10" id="s14"/>
+            <af:spacer width="10" height="10" id="s15"/>
+            <af:spacer width="10" height="10" id="s16"/>
+            <af:spacer width="10" height="10" id="s17"/>
+            <af:spacer width="10" height="10" id="s18"/>
+            <af:spacer width="10" height="10" id="s19"/>
+            <af:spacer width="10" height="10" id="s20"/>
+            <af:spacer width="10" height="10" id="s21"/>
+            <af:spacer width="10" height="10" id="s22"/>
+            <af:spacer width="10" height="10" id="s23"/>
+            <af:spacer width="10" height="10" id="s24"/>
+            <af:spacer width="10" height="10" id="s25"/>
+            <af:spacer width="10" height="10" id="s26"/>
+            <af:spacer width="10" height="10" id="s27"/>
+            <af:spacer width="10" height="10" id="s28"/>
+            <af:spacer width="10" height="10" id="s29"/>
+            <af:panelGroupLayout id="pgl2"
+                                 inlineStyle="width:40%; text-align:right;">
+              <af:outputLabel value="Total Budget Of #{bindings.BudgetYear2.attributeValue} Q#{bindings.BudgetQuarter2.attributeValue} :"
+                              id="ol2" for="ot32"
+                              partialTriggers="budgetYear2Id budgetQuarter2Id"
+                              inlineStyle="font-size:medium;"/>
+              <af:outputText id="ot32" binding="#{backingBean.ttlBudgetAmt2}"
+                             partialTriggers="cb3"
+                             inlineStyle="font-size:medium; font-weight:bold;">
+                <af:convertNumber groupingUsed="true" minFractionDigits="2"
+                                  maxFractionDigits="2"/>
+              </af:outputText>
+            </af:panelGroupLayout>
+          </af:panelGroupLayout>
+          <af:panelCollection id="panelCollection1" styleClass="AFStretchWidth"
+                              inlineStyle="height:500.0px;"
+                              partialTriggers="::unit1Id ::unit2Id"
+                              visible="#{bindings.Unit1.inputValue != null and bindings.Unit2.inputValue != null }">
+            <f:facet name="menus"/>
+            <f:facet name="toolbar">
+              <af:toolbar id="t2">
+                <af:commandButton text="Export Excel" id="cb1">
+                  <af:exportCollectionActionListener exportedId="t1"
+                                                     type="excelHTML"
+                                                     filename="Summary.xls"
+                                                     title="BudgetSummary"/>
+                </af:commandButton>
+                <af:spacer width="180" height="10" id="s30"/>
+                <af:panelGroupLayout id="panelGroupLayout9" layout="horizontal"
+                                     halign="center"
+                                     inlineStyle="font-size:15px; color:Navy; font-weight:bold;">
+                  <af:outputText value="Total" id="outputText3"
+                                 inlineStyle="font-size:15px; color:Black; font-weight:bold;"/>
+                  <af:spacer width="5" height="10" id="spacer2"/>
+                  <af:outputText id="outputText4"
+                                 inlineStyle="font-size:medium; font-weight:bold; color:rgb(0,132,132);"
+                                 value="#{bindings.SummaryVO1Iterator.estimatedRowCount}"
+                                 partialTriggers="t1"/>
+                  <af:spacer width="5" height="10" id="spacer3"/>
+                  <af:outputText value="Records" id="outputText5"
+                                 inlineStyle="font-size:15px; color:Black; font-weight:bold;"/>
+                </af:panelGroupLayout>
+              </af:toolbar>
+            </f:facet>
+            <f:facet name="statusbar"/>
+            <af:table value="#{bindings.SummaryVO1.collectionModel}" var="row"
+                      rows="#{bindings.SummaryVO1.rangeSize}"
+                      emptyText="#{bindings.SummaryVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      fetchSize="#{bindings.SummaryVO1.rangeSize}"
+                      rowBandingInterval="0"
+                      filterModel="#{bindings.SummaryVO1Query.queryDescriptor}"
+                      queryListener="#{bindings.SummaryVO1Query.processQuery}"
+                      filterVisible="true" varStatus="vs"
+                      selectedRowKeys="#{bindings.SummaryVO1.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.SummaryVO1.collectionModel.makeCurrent}"
+                      rowSelection="single" id="t1"
+                      partialTriggers=":::cb3  :::unit1Id :::unit2Id">
+              <af:column sortProperty="#{bindings.SummaryVO1.hints.OrgId1.name}"
+                         filterable="true" sortable="true"
+                         headerText="#{bindings.SummaryVO1.hints.OrgId1.label}"
+                         id="c2" visible="false" align="center">
+                <af:outputText value="#{row.OrgId1}" id="ot3">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.SummaryVO1.hints.OrgId1.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column id="c29" headerText="Sr." width="35" align="center">
+                <af:outputText value="#{vs.index+1}" id="ot33"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.SummaryVO1.hints.Unit1.name}"
+                         filterable="true" sortable="true"
+                         headerText="Unit"
+                         id="c12" width="50" align="center">
+                <af:outputText value="#{row.Unit1}" id="ot12"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.SummaryVO1.hints.BudgetYear1.name}"
+                         filterable="true" sortable="true"
+                         headerText="Budget Year 1"
+                         id="c16" align="center" visible="false">
+                <af:outputText value="#{row.BudgetYear1}" id="ot2">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.SummaryVO1.hints.BudgetYear1.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.SummaryVO1.hints.BudgetQuarter1.name}"
+                         filterable="true" sortable="true"
+                         headerText="Budget Quarter 1"
+                         id="c5" width="80" align="center" visible="false">
+                <af:outputText value="#{row.BudgetQuarter1}" id="ot11">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.SummaryVO1.hints.BudgetQuarter1.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.SummaryVO1.hints.OpexChild1.name}"
+                         filterable="true" sortable="true"
+                         headerText="Natural Account Category"
+                         id="c14" width="120" align="center">
+                <af:outputText value="#{row.OpexChild1}" id="ot8"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.SummaryVO1.hints.NaturalCode1.name}"
+                         filterable="true" sortable="true"
+                         headerText="#{bindings.SummaryVO1.hints.NaturalCode1.label}"
+                         id="c10" align="center" visible="false">
+                <af:outputText value="#{row.NaturalCode1}" id="ot6"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.SummaryVO1.hints.CodeDescription1.name}"
+                         filterable="true" sortable="true"
+                         headerText="Natural Account Description"
+                         id="c13" width="250" align="center">
+                <af:outputText value="#{row.CodeDescription1}" id="ot7"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.SummaryVO1.hints.BudgetAmount1.name}"
+                         filterable="true" sortable="true"
+                         headerText="Budget #{bindings.BudgetYear1.attributeValue} Q#{bindings.BudgetQuarter1.attributeValue}"
+                         id="c1" align="right">
+                <af:outputText value="#{row.BudgetAmount1}" id="ot16"
+                               inlineStyle="text-align:right;">
+                  <af:convertNumber groupingUsed="true" minFractionDigits="2"
+                                    maxFractionDigits="2"/>
+                </af:outputText>
+                <f:facet name="footer"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.SummaryVO1.hints.OrgId2.name}"
+                         filterable="true" sortable="true"
+                         headerText="#{bindings.SummaryVO1.hints.OrgId2.label}"
+                         id="c4" visible="false" align="center">
+                <af:outputText value="#{row.OrgId2}" id="ot18">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.SummaryVO1.hints.OrgId2.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.SummaryVO1.hints.Unit2.name}"
+                         filterable="true" sortable="true"
+                         headerText="#{bindings.SummaryVO1.hints.Unit2.label}"
+                         id="c3" width="50" align="center" visible="false">
+                <af:outputText value="#{row.Unit2}" id="ot5"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.SummaryVO1.hints.BudgetYear2.name}"
+                         filterable="true" sortable="true"
+                         headerText="Budget Year 2"
+                         id="c11" align="center" visible="false">
+                <af:outputText value="#{row.BudgetYear2}" id="ot17">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.SummaryVO1.hints.BudgetYear2.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.SummaryVO1.hints.BudgetQuarter2.name}"
+                         filterable="true" sortable="true"
+                         headerText="Budget Quarter 2"
+                         id="c8" width="80" align="center" visible="false">
+                <af:outputText value="#{row.BudgetQuarter2}" id="ot10">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.SummaryVO1.hints.BudgetQuarter2.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.SummaryVO1.hints.OpexChild2.name}"
+                         filterable="true" sortable="true"
+                         headerText="Item Category 2"
+                         id="c9" width="120" align="center" visible="false">
+                <af:outputText value="#{row.OpexChild2}" id="ot15"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.SummaryVO1.hints.NaturalCode2.name}"
+                         filterable="true" sortable="true"
+                         headerText="#{bindings.SummaryVO1.hints.NaturalCode2.label}"
+                         id="c7" align="center" visible="false">
+                <af:outputText value="#{row.NaturalCode2}" id="ot9"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.SummaryVO1.hints.CodeDescription2.name}"
+                         filterable="true" sortable="true"
+                         headerText="Code Description 2"
+                         id="c6" width="160" align="center" visible="false">
+                <af:outputText value="#{row.CodeDescription2}" id="ot1"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.SummaryVO1.hints.BudgetAmount2.name}"
+                         filterable="true" sortable="true"
+                         headerText="Budget #{bindings.BudgetYear2.attributeValue} Q#{bindings.BudgetQuarter2.attributeValue}"
+                         id="c15" align="right">
+                <af:outputText value="#{row.BudgetAmount2}" id="ot4"
+                               inlineStyle="text-align:right;">
+                  <af:convertNumber groupingUsed="true" minFractionDigits="2"
+                                    maxFractionDigits="2"/>
+                </af:outputText>
+                <f:facet name="footer"/>
+              </af:column>
+            </af:table>
+          </af:panelCollection>
+          <af:panelCollection id="pc1" styleClass="AFStretchWidth"
+                              inlineStyle="height:500.0px;"
+                              visible="#{bindings.Unit1.inputValue == null and bindings.Unit2.inputValue == null }"
+                              partialTriggers="::unit1Id ::unit2Id">
+            <f:facet name="menus"/>
+            <f:facet name="toolbar">
+              <af:toolbar id="t4">
+                <af:commandButton text="Export Excel" id="commandButton1">
+                  <af:exportCollectionActionListener exportedId="t3"
+                                                     type="excelHTML"
+                                                     filename="Summary.xls"
+                                                     title="BudgetSummary"/>
+                </af:commandButton>
+                <af:spacer width="180" height="10" id="spacer1"/>
+                <af:panelGroupLayout id="panelGroupLayout2" layout="horizontal"
+                                     halign="center"
+                                     inlineStyle="font-size:15px; color:Navy; font-weight:bold;">
+                  <af:outputText value="Total" id="outputText1"
+                                 inlineStyle="font-size:15px; color:Black; font-weight:bold;"/>
+                  <af:spacer width="5" height="10" id="spacer4"/>
+                  <af:outputText id="outputText2"
+                                 inlineStyle="font-size:medium; font-weight:bold; color:rgb(0,132,132);"
+                                 value="#{bindings.Summary2VO1Iterator.estimatedRowCount}"
+                                 partialTriggers="t3"/>
+                  <af:spacer width="5" height="10" id="spacer5"/>
+                  <af:outputText value="Records" id="outputText6"
+                                 inlineStyle="font-size:15px; color:Black; font-weight:bold;"/>
+                </af:panelGroupLayout>
+              </af:toolbar>
+            </f:facet>
+            <f:facet name="statusbar"/>
+            <af:table value="#{bindings.Summary2VO1.collectionModel}" var="row"
+                      rows="#{bindings.Summary2VO1.rangeSize}"
+                      emptyText="#{bindings.Summary2VO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      fetchSize="#{bindings.Summary2VO1.rangeSize}"
+                      rowBandingInterval="0"
+                      filterModel="#{bindings.Summary2VO1Query.queryDescriptor}"
+                      queryListener="#{bindings.Summary2VO1Query.processQuery}"
+                      filterVisible="true" varStatus="vs"
+                      selectedRowKeys="#{bindings.Summary2VO1.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.Summary2VO1.collectionModel.makeCurrent}"
+                      rowSelection="single" id="t3"
+                      partialTriggers=":::cb3 :::unit1Id :::unit2Id">
+              <af:column sortProperty="#{bindings.Summary2VO1.hints.BudgetYear1.name}"
+                         filterable="true" sortable="true"
+                         headerText="Budget Year 1"
+                         id="c21" align="center" visible="false">
+                <af:outputText value="#{row.BudgetYear1}" id="ot28">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.Summary2VO1.hints.BudgetYear1.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.Summary2VO1.hints.BudgetQuarter1.name}"
+                         filterable="true" sortable="true"
+                         headerText="Budget Quarter 1"
+                         id="c20" align="center" visible="false">
+                <af:outputText value="#{row.BudgetQuarter1}" id="ot19">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.Summary2VO1.hints.BudgetQuarter1.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column id="c30" headerText="Sr." align="center" width="35">
+                <af:outputText value="#{vs.index+1}" id="ot34"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Summary2VO1.hints.OpexChild1.name}"
+                         filterable="true" sortable="true"
+                         headerText="Natural Account Category"
+                         id="c27" width="120" align="center">
+                <af:outputText value="#{row.OpexChild1}" id="ot29"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Summary2VO1.hints.NaturalCode1.name}"
+                         filterable="true" sortable="true"
+                         headerText="#{bindings.Summary2VO1.hints.NaturalCode1.label}"
+                         id="c19" align="center" visible="false">
+                <af:outputText value="#{row.NaturalCode1}" id="ot26"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Summary2VO1.hints.CodeDescription1.name}"
+                         filterable="true" sortable="true"
+                         headerText="Natural Account Description"
+                         id="c22" width="250" align="center">
+                <af:outputText value="#{row.CodeDescription1}" id="ot20"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Summary2VO1.hints.BudgetAmount1.name}"
+                         filterable="true" sortable="true"
+                         headerText="Budget #{bindings.BudgetYear1.attributeValue} Q#{bindings.BudgetQuarter1.attributeValue}"
+                         id="c18" align="right">
+                <af:outputText value="#{row.BudgetAmount1}" id="ot21"
+                               inlineStyle="text-align:right;">
+                  <af:convertNumber groupingUsed="true" minFractionDigits="2"
+                                    maxFractionDigits="2"/>
+                </af:outputText>
+                <f:facet name="footer"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Summary2VO1.hints.BudgetYear2.name}"
+                         filterable="true" sortable="true"
+                         headerText="Budget Year 2"
+                         id="c25" align="center" visible="false">
+                <af:outputText value="#{row.BudgetYear2}" id="ot27">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.Summary2VO1.hints.BudgetYear2.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.Summary2VO1.hints.BudgetQuarter2.name}"
+                         filterable="true" sortable="true"
+                         headerText="Budget Quarter 2"
+                         id="c28" align="center" visible="false">
+                <af:outputText value="#{row.BudgetQuarter2}" id="ot23">
+                  <af:convertNumber groupingUsed="false"
+                                    pattern="#{bindings.Summary2VO1.hints.BudgetQuarter2.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="#{bindings.Summary2VO1.hints.OpexChild2.name}"
+                         filterable="true" sortable="true"
+                         headerText="Item Category 2"
+                         id="c26" width="120" align="center" visible="false">
+                <af:outputText value="#{row.OpexChild2}" id="ot24"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Summary2VO1.hints.NaturalCode2.name}"
+                         filterable="true" sortable="true"
+                         headerText="#{bindings.Summary2VO1.hints.NaturalCode2.label}"
+                         id="c23" align="center" visible="false">
+                <af:outputText value="#{row.NaturalCode2}" id="ot30"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Summary2VO1.hints.CodeDescription2.name}"
+                         filterable="true" sortable="true"
+                         headerText="Natural Account Description 2"
+                         id="c17" width="160" align="center" visible="false">
+                <af:outputText value="#{row.CodeDescription2}" id="ot22"/>
+              </af:column>
+              <af:column sortProperty="#{bindings.Summary2VO1.hints.BudgetAmount2.name}"
+                         filterable="true" sortable="true"
+                         headerText="Budget #{bindings.BudgetYear2.attributeValue} Q#{bindings.BudgetQuarter2.attributeValue}"
+                         id="c24" align="right">
+                <af:outputText value="#{row.BudgetAmount2}" id="ot25"
+                               inlineStyle="text-align:right;">
+                  <af:convertNumber groupingUsed="true" minFractionDigits="2"
+                                    maxFractionDigits="2"/>
+                </af:outputText>
+                <f:facet name="footer"/>
+              </af:column>
+            </af:table>
+          </af:panelCollection>
+        </af:panelGroupLayout>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SummaryVO"
+  Version="11.1.1.62.29"
+  InheritPersonalization="true"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="view.SummaryVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="param"
+    Kind="where"
+    Type="java.lang.String"/>
+  <Variable
+    Name="dept1"
+    Kind="where"
+    Type="java.lang.String"/>
+  <Variable
+    Name="dept2"
+    Kind="where"
+    Type="java.lang.String"/>
+  <Variable
+    Name="B_year1"
+    Kind="where"
+    Type="java.lang.String"/>
+  <Variable
+    Name="B_year2"
+    Kind="where"
+    Type="java.lang.String"/>
+  <Variable
+    Name="B_Q1"
+    Kind="where"
+    Type="java.lang.String"/>
+  <Variable
+    Name="B_Q2"
+    Kind="where"
+    Type="java.lang.String"/>
+  <Variable
+    Name="org1"
+    Kind="where"
+    Type="java.lang.String"/>
+  <Variable
+    Name="org2"
+    Kind="where"
+    Type="java.lang.String"/>
+  <Variable
+    Name="resp_id"
+    Kind="where"
+    Type="java.lang.String">
+    <TransientExpression><![CDATA[adf.context.sessionScope.respId]]></TransientExpression>
+  </Variable>
+  <SQLQuery>
+    <![CDATA[/* Formatted on 6/10/2020 4:30:27 PM (QP5 v5.256.13226.35510) */
+SELECT B1.ORG_ID ORG_ID1,
+       (SELECT ORGANIZATION_CODE
+          FROM ORG_ORGANIZATION_DEFINITIONS
+         WHERE OPERATING_UNIT = B1.ORG_ID)
+          UNIT1,
+       --       B1.BUDGET_YEAR BUDGET_YEAR1,
+       --       B1.BUDGET_QUARTER BUDGET_QUARTER1,
+       B1.OPEX_CHILD OPEX_CHILD1,
+       B1.NATURAL_CODE NATURAL_CODE1,
+       B1.CODE_DESCRIPTION CODE_DESCRIPTION1,
+       NVL (B1.AMOUNT, 0) - NVL (B2.AMOUNT, 0) BUDGET_AMOUNT1,
+       B2.ORG_ID ORG_ID2,
+       (SELECT ORGANIZATION_CODE
+          FROM ORG_ORGANIZATION_DEFINITIONS
+         WHERE OPERATING_UNIT = B2.ORG_ID)
+          UNIT2,
+       --         B2.BUDGET_YEAR BUDGET_YEAR2,
+       --         B2.BUDGET_QUARTER BUDGET_QUARTER2,
+       B2.OPEX_CHILD OPEX_CHILD2,
+       B2.NATURAL_CODE NATURAL_CODE2,
+       B2.CODE_DESCRIPTION CODE_DESCRIPTION2,
+       NVL (B2.AMOUNT, 0) BUDGET_AMOUNT2
+  FROM (  SELECT ORG_ID,
+                 --                 BUDGET_YEAR,
+                 --                 BUDGET_QUARTER,
+                 OPEX_CHILD,
+                 NATURAL_CODE,
+                 CODE_DESCRIPTION,
+                 SUM (BUDGET_AMOUNT) AMOUNT
+            FROM MJ_BUDJET_SUMMARY_DUMMY                         --Master View
+           WHERE     (BUDGET_QUARTER = :B_Q1 OR BUDGET_QUARTER = :B_Q2)
+                 AND (BUDGET_YEAR = :B_year1 OR BUDGET_YEAR = :B_year2)
+                 AND DEPARTMENT BETWEEN :dept1 AND :dept2
+                 AND ORG_ID = :org1
+        GROUP BY ORG_ID,
+                 --                 BUDGET_YEAR,
+                 --                 BUDGET_QUARTER,
+                 OPEX_CHILD,
+                 NATURAL_CODE,
+                 CODE_DESCRIPTION) B1,
+       (  SELECT ORG_ID,
+                 --                 BUDGET_YEAR,
+                 --                 BUDGET_QUARTER,
+                 OPEX_CHILD,
+                 NATURAL_CODE,
+                 CODE_DESCRIPTION,
+                 SUM (BUDGET_AMOUNT) AMOUNT
+            FROM MJ_BUDGET_SUMMARY_DUMMY                         --Custom View
+           WHERE     (BUDGET_QUARTER = :B_Q2)
+                 AND (BUDGET_YEAR = :B_year2)
+                 AND DEPARTMENT BETWEEN :dept1 AND :dept2
+                 AND ORG_ID = :org2
+        GROUP BY ORG_ID,
+                 --                 BUDGET_YEAR,
+                 --                 BUDGET_QUARTER,
+                 OPEX_CHILD,
+                 NATURAL_CODE,
+                 CODE_DESCRIPTION) B2
+ WHERE     b1.ORG_ID = b2.ORG_ID(+)
+       AND b1.OPEX_CHILD = b2.OPEX_CHILD(+)
+       AND b1.NATURAL_CODE = b2.NATURAL_CODE(+)
+       --       and b1.BUDGET_YEAR = b2.BUDGET_YEAR
+       --       and b1.BUDGET_QUARTER = b2.BUDGET_QUARTER
+       AND 1 = :param
+       AND :resp_id = '52849']]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="OrgId1"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="ORG_ID1"
+    Expression="ORG_ID1"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Unit1"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="3"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="UNIT1"
+    Expression="UNIT1"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="3"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BudgetYear1"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="BUDGET_YEAR1"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BudgetQuarter1"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="BUDGET_QUARTER1"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OpexChild1"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="OPEX_CHILD1"
+    Expression="OPEX_CHILD1"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="NaturalCode1"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="15"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="NATURAL_CODE1"
+    Expression="NATURAL_CODE1"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CodeDescription1"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="240"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CODE_DESCRIPTION1"
+    Expression="CODE_DESCRIPTION1"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="240"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BudgetAmount1"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="BUDGET_AMOUNT1"
+    Expression="BUDGET_AMOUNT1"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OrgId2"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="ORG_ID2"
+    Expression="ORG_ID2"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Unit2"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="3"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="UNIT2"
+    Expression="UNIT2"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="3"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BudgetYear2"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="BUDGET_YEAR2"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BudgetQuarter2"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="BUDGET_QUARTER2"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OpexChild2"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="200"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="OPEX_CHILD2"
+    Expression="OPEX_CHILD2"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="NaturalCode2"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="200"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="NATURAL_CODE2"
+    Expression="NATURAL_CODE2"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CodeDescription2"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="500"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CODE_DESCRIPTION2"
+    Expression="CODE_DESCRIPTION2"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="500"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BudgetAmount2"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="BUDGET_AMOUNT2"
+    Expression="BUDGET_AMOUNT2"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="39"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

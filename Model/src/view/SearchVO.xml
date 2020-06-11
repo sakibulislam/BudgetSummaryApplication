@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SearchVO"
+  Version="11.1.1.62.29"
+  InheritPersonalization="true"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="view.SearchVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewAccessor
+    Name="OrgLOV1"
+    ViewObjectName="lov.OrgLOV"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="budgetYear1LOV1"
+    ViewObjectName="lov.budgetYear1LOV"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="budgetYear2LOV1"
+    ViewObjectName="lov.budgetYear2LOV"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="departmentLOV1"
+    ViewObjectName="lov.departmentLOV"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="departmentLOVCriteria"
+      FullName="lov.departmentLOV.departmentLOVCriteria"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="budgetQuarter1"
+    ViewObjectName="lov.budgetQuarter"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_Unit1"
+    ListVOName="OrgLOV1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_Unit1_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Unit1"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="Org1"/>
+      <Item Value="Org2"/>
+      <Item Value="Unit2"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="OrganizationCode"/>
+      <Item Value="OperatingUnit"/>
+      <Item Value="OperatingUnit"/>
+      <Item Value="OrganizationCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="OrganizationCode"/>
+      <Item Value="OperatingUnit"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Unit2"
+    ListVOName="OrgLOV1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_Unit2_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Unit2"/>
+    </AttrArray>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="Org2"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="OrganizationCode"/>
+      <Item Value="OperatingUnit"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="OrganizationCode"/>
+      <Item Value="OperatingUnit"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_BudgetYear1"
+    ListVOName="budgetYear1LOV1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_BudgetYear1_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="BudgetYear1"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="BudgetYear"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="BudgetYear"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_BudgetYear2"
+    ListVOName="budgetYear2LOV1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_BudgetYear2_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="BudgetYear2"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="BudgetYear"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="BudgetYear"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_BudgetQuarter1"
+    ListVOName="budgetQuarter1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="BudgetQuarter1"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="BudgetQuarter"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="BudgetQuarter"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_BudgetQuarter2"
+    ListVOName="budgetQuarter1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="BudgetQuarter2"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="BudgetQuarter"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="BudgetQuarter"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_DepartmentFrom"
+    ListVOName="departmentLOV1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_DepartmentFrom_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="DepartmentFrom"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CostCenter"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="CostCenter"/>
+      <Item Value="CostCenterName"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_DepartmentTo"
+    ListVOName="departmentLOV1"
+    ListRangeSize="10"
+    NullValueFlag="none"
+    NullValueId="LOV_DepartmentTo_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="DepartmentTo"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="CostCenter"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="CostCenter"/>
+      <Item Value="CostCenterName"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <SQLQuery>
+    <![CDATA[select ''UNIT1, ''UNIT2,''ORG1,''ORG2, ''BUDGET_YEAR1, ''BUDGET_YEAR2, ''BUDGET_QUARTER1, ''BUDGET_QUARTER2 ,''Department_From, ''Department_To  from dual]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="Unit1"
+    LOVName="LOV_Unit1"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="32"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="UNIT1"
+    Expression="UNIT1"
+    SQLType="VARCHAR">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Unit2"
+    LOVName="LOV_Unit2"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="32"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="UNIT2"
+    Expression="UNIT2"
+    SQLType="VARCHAR">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Org1"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="32"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="CHAR"
+    AliasName="ORG1"
+    Expression="ORG1"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="Org2"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="32"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="CHAR"
+    AliasName="ORG2"
+    Expression="ORG2"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="BudgetYear1"
+    LOVName="LOV_BudgetYear1"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="32"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="CHAR"
+    AliasName="BUDGET_YEAR1"
+    Expression="BUDGET_YEAR1"
+    SQLType="NUMERIC">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BudgetYear2"
+    LOVName="LOV_BudgetYear2"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="32"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="CHAR"
+    AliasName="BUDGET_YEAR2"
+    Expression="BUDGET_YEAR2"
+    SQLType="NUMERIC">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BudgetQuarter1"
+    LOVName="LOV_BudgetQuarter1"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="32"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="CHAR"
+    AliasName="BUDGET_QUARTER1"
+    Expression="BUDGET_QUARTER1"
+    SQLType="NUMERIC">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BudgetQuarter2"
+    LOVName="LOV_BudgetQuarter2"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="32"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="CHAR"
+    AliasName="BUDGET_QUARTER2"
+    Expression="BUDGET_QUARTER2"
+    SQLType="NUMERIC">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DepartmentFrom"
+    LOVName="LOV_DepartmentFrom"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="32"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="CHAR"
+    AliasName="DEPARTMENT_FROM"
+    Expression="DEPARTMENT_FROM"
+    SQLType="NUMERIC">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DepartmentTo"
+    LOVName="LOV_DepartmentTo"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="32"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="CHAR"
+    AliasName="DEPARTMENT_TO"
+    Expression="DEPARTMENT_TO"
+    SQLType="NUMERIC">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>
